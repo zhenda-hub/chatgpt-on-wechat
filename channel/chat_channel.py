@@ -50,12 +50,14 @@ class ChatChannel(Channel):
             cmsg = context["msg"]
             user_data = conf().get_user_data(cmsg.from_user_id)
             context["openai_api_key"] = user_data.get("openai_api_key")
+            logger.info('context.get("isgroup"): %s' % context.get("isgroup"))
             if context.get("isgroup", False):
                 group_name = cmsg.other_user_nickname
                 group_id = cmsg.other_user_id
 
                 group_name_white_list = config.get("group_name_white_list", [])
                 group_name_keyword_white_list = config.get("group_name_keyword_white_list", [])
+                logger.info('at here!!!')
                 if any(
                     [
                         group_name in group_name_white_list,
@@ -73,6 +75,7 @@ class ChatChannel(Channel):
                     ):
                         session_id = group_id
                 else:
+                    logger.info('group ng!!!')
                     return None
                 context["session_id"] = session_id
                 context["receiver"] = group_id

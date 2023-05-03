@@ -11,6 +11,7 @@
     "@bot"
   ],
   "group_name_white_list": [
+    "zzd_gpt_group1",
     "ALL_GROUP"
   ],
   "group_chat_in_one_session": [
