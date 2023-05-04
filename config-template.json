@@ -1,5 +1,5 @@
 {
-  "open_ai_api_key": "YOUR API KEY",
+  "open_ai_api_key": "xxx",
   "model": "gpt-3.5-turbo",
   "proxy": "",
   "single_chat_prefix": [
@@ -11,8 +11,7 @@
     "@bot"
   ],
   "group_name_white_list": [
-    "ChatGPT测试群",
-    "ChatGPT测试群2"
+    "ALL_GROUP"
   ],
   "group_chat_in_one_session": [
     "ChatGPT测试群"
@@ -22,6 +21,8 @@
     "看",
     "找"
   ],
+  "image_create_size": "512x512",
+  "debug": 0,
   "speech_recognition": false,
   "group_speech_recognition": false,
   "voice_reply_voice": false,
