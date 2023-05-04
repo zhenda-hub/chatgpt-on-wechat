@@ -32,7 +32,7 @@ available_setting = {
     "trigger_by_self": False,  # 是否允许机器人触发
     "image_create_prefix": ["画", "看", "找"],  # 开启图片回复的前缀
     "concurrency_in_session": 1,  # 同一会话最多有多少条消息在处理中，大于1可能乱序
-    "image_create_size": "1024x1024",  # 图片大小,可选有 256x256, 512x512, 1024x1024
+    "image_create_size": "512x512",  # 图片大小,可选有 256x256, 512x512, 1024x1024
     # chatgpt会话参数
     "expires_in_seconds": 3600,  # 无操作会话的过期时间
     "character_desc": "你是ChatGPT, 一个由OpenAI训练的大型语言模型, 你旨在回答并解决人们的任何问题，并且可以使用多种语言与人交流。",  # 人格描述
@@ -167,7 +167,7 @@ def load_config():
         config_path = "./config-template.json"
 
     config_str = read_file(config_path)
-    logger.debug("[INIT] config str: {}".format(config_str))
+    logger.info("[INIT] config str: {}".format(config_str))
 
     # 将json字符串反序列化为dict类型
     config = Config(json.loads(config_str))
@@ -187,7 +187,9 @@ def load_config():
                     config[name] = True
                 else:
                     config[name] = value
-
+    logger.info('config.get("image_create_size"):%s' % config.get("image_create_size"))
+    logger.info('config.get("debug"):%s' % config.get("debug"))
+    logger.info('config.get("image_create_prefix"):%s' % config.get("image_create_prefix"))
     if config.get("debug", False):
         logger.setLevel(logging.DEBUG)
         logger.debug("[INIT] set log level to DEBUG")
